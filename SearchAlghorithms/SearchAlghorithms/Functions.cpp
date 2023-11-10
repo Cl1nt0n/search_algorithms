@@ -33,7 +33,7 @@ int sentinel_linear_search(int* sequestion, int size, int& number_of_key_compari
 	}
 
 	*(sequestion + size - 1) = last;//Возвращаем последний эл-т на своё место
-	if (i < size //Если индекс не вышел за пределы массива или последний эл-т массива равен ключу
+	if (i < size - 1 //Если индекс не вышел за пределы массива или последний эл-т массива равен ключу
 		|| *(sequestion + size - 1) == element_to_search)
 	{
 		return i;//Возвращаем индекс найденного эл-та
@@ -46,7 +46,7 @@ int sentinel_linear_search(int* sequestion, int size, int& number_of_key_compari
 int ordered_array_search(int* sequestion, int size, int element_to_search)
 {
 	int i = 0;
-	while (*(sequestion + i) < element_to_search)//Пока  i-ый эл-т массива меньше,чем нужный
+	while (*(sequestion + i) < element_to_search && i < size)//Пока  i-ый эл-т массива меньше,чем нужный
 	{
 		++i;//Переходим к следующему
 	}
@@ -74,11 +74,11 @@ int binary_search(int* sequestion, int size, int element_to_search)
 		}
 		else if (*(sequestion + midle) > element_to_search)//Если средний эл-т больше ключа
 		{
-			end_index = midle;//Сдвигаем конечный индекс на место среднего
+			end_index = midle - 1;//Сдвигаем конечный индекс на место среднего
 		}
 		else//Если средний эл-т меньше ключа
 		{
-			begin_index = midle;//Сдвигаем начальный индекс на место среднего
+			begin_index = midle + 1;//Сдвигаем начальный индекс на место среднего
 		}
 	}
 
